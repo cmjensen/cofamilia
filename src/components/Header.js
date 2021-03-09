@@ -11,7 +11,7 @@ class Header extends React.Component {
     }
 
     logout = () => {
-        axios.post('/auth/logout')
+        axios.post('/api/auth/logout')
         this.props.history.push('/')
     }
 

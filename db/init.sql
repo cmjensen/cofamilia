@@ -11,7 +11,7 @@ CREATE TABLE child (
     parent1_id INT REFERENCES users(user_id),
     parent2_id INT REFERENCES users(user_id),
     child_name VARCHAR(40) NOT NULL,
-    child_code INT 
+    child_code INT UNIQUE NOT NULL
 );
 
 CREATE TABLE expenses (

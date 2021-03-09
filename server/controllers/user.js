@@ -11,13 +11,13 @@ module.exports = {
         const salt = bcrypt.genSaltSync(10)
         let hash = bcrypt.hashSync( password, salt )
         const [newUser] = await db.user.create_user([ f_name, l_name, email, hash ])
-        // const [childCode] = await db.child.update_child([ newUser.user_id, child_code ])
+        const [childCode] = await db.child.update_child([ newUser.user_id, child_code ])
         req.session.user = {
             userId: newUser.user_id,
             f_name: newUser.f_name,
             l_name: newUser.l_name,
             email: newUser.email,
-            // childCode: childCode.child_code
+            childCode: childCode.child_code
         }
         res.status(200).send(req.session.user)
         console.log(req.session.user)

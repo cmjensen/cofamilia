@@ -7,7 +7,7 @@ module.exports = {
     },
     addChild: async ( req, res ) => {
         const db = req.app.get('db')
-        const { child_name, email } = req.body
+        const { child_name } = req.body
 
         let [user] = await db.user.find_user_by_email([ email ])
         if( !user ) user = { user_id: null }
