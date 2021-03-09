@@ -1,8 +1,8 @@
 import React from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { getUser } from '../redux/userReducer'
+import { getUser, logoutUser } from '../redux/userReducer'
 
 class Header extends React.Component {
     
@@ -12,7 +12,10 @@ class Header extends React.Component {
 
     logout = () => {
         axios.post('/api/auth/logout')
-        this.props.history.push('/')
+            .then(() => {
+                this.props.logoutUser()
+                this.props.history.push('/')
+            })
     }
 
     render(){
@@ -25,6 +28,7 @@ class Header extends React.Component {
                     <Link className='links' to="/calendar">Calendar</Link>
                     <Link className='links' to="/expenses">Expenses</Link>
                     <Link className='links' to="/contacts">Contacts</Link>
+                    <button onClick={ this.logout }>Logout</button>
             </div>
         </div>
         {/* :
@@ -36,4 +40,4 @@ class Header extends React.Component {
 
 const mapStateToProps = state => state
 
-export default connect(mapStateToProps, { getUser })(Header)
+export default withRouter(connect(mapStateToProps, { getUser, logoutUser })(Header)) 

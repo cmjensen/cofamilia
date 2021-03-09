@@ -11,13 +11,14 @@ module.exports = {
         const salt = bcrypt.genSaltSync(10)
         let hash = bcrypt.hashSync( password, salt )
         const [newUser] = await db.user.create_user([ f_name, l_name, email, hash ])
-        const [childCode] = await db.child.update_child([ newUser.user_id, child_code ])
+        const [updateChild] = await db.child.update_child([ newUser.user_id, child_code ])
+        const [newCode] = await db.child.get_child([ newUser.user_id ])
         req.session.user = {
             userId: newUser.user_id,
             f_name: newUser.f_name,
             l_name: newUser.l_name,
             email: newUser.email,
-            childCode: childCode.child_code
+            child_code: newCode.child_code
         }
         res.status(200).send(req.session.user)
         console.log(req.session.user)
@@ -37,7 +38,7 @@ module.exports = {
                 f_name: foundUser.f_name,
                 l_name: foundUser.l_name,
                 email: foundUser.email,
-                childCode: childCode.child_code
+                child_code: childCode.child_code
             }
             res.status(200).send(req.session.user)
             console.log(req.session.user)
@@ -45,7 +46,7 @@ module.exports = {
             res.status(401).send('Incorrect login credentials.')
         }
     },
-    logout: ( req, res ) => {
+    logoutUser: ( req, res ) => {
         req.session.destroy()
         res.sendStatus(200)
     },

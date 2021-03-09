@@ -4,6 +4,7 @@ const userCtrl = require('./controllers/user')
 const expensesCtrl = require('./controllers/expenses')
 const contactsCtrl = require('./controllers/contacts')
 const childCtrl = require('./controllers/child')
+const mailCtrl = require('./controllers/mailer')
 const massive = require('massive')
 const session = require('express-session')
 
@@ -35,7 +36,7 @@ massive({
 app.post('/api/auth/register', userCtrl.register);
 app.post('/api/auth/login', userCtrl.login);
 app.get('/api/auth/user', userCtrl.getUser);
-app.post('/api/auth/logout', userCtrl.logout);
+app.post('/api/auth/logout', userCtrl.logoutUser);
 
 //EXPENSES ENDPOINTS
 app.get('/api/expenses', expensesCtrl.getExpenses);
@@ -52,6 +53,9 @@ app.delete('/api/contact/:id', contactsCtrl.deleteContact);
 //CHILD ENDPOINTS
 app.get('/api/child', childCtrl.getChild);
 app.post('/api/child', childCtrl.addChild);
+
+//MAIL ENDPOINT
+app.post('/api/mail', mailCtrl.sendEmail)
 
 
 app.listen(SERVER_PORT, () => console.log(`Running on port ${SERVER_PORT}`));

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-//* how to connect to redux, do it for any component that needs state
 import { connect } from 'react-redux'
 import axios from 'axios'
 import { loginUser } from '../redux/userReducer'
