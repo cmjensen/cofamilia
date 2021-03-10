@@ -26,6 +26,7 @@ CREATE TABLE contacts (
     contact_f_name VARCHAR(40),
     contact_l_name VARCHAR(40),
     number VARCHAR(10) NOT NULL,
+    category VARCHAR(40),
     child_id INT REFERENCES child(child_id)
 );
 

@@ -8,6 +8,7 @@ class Main extends React.Component {
         super()
         this.state = {
             child_name: '',
+            co_email: '',
             hasChild: false
         }
     }
@@ -35,9 +36,22 @@ class Main extends React.Component {
             const child = await axios.post('/api/child', { child_name })
         }
         catch {
-            alert('Failed to Add Child')
+            alert('Failed to add child')
         }
     }
+
+    sendEmail = async (e) => {
+        e.preventDefault(e)
+        const { co_email } = this.state
+        try {
+            await axios.post('/api/mail', { co_email })
+            alert('Email sent')
+        }
+        catch {
+            alert('Failed to send email')
+        }
+    }
+
 
     render(){
         return <div>
@@ -61,6 +75,17 @@ class Main extends React.Component {
                     <h2>Please provide your co-parent with this code to use when registering:</h2>
                     <h2>{this.props.user.child_code}</h2>
                     <h3>You will be able to access CoFamilia once your co-parent has created an account and joined with yours.</h3>
+                <form onSubmit={ this.sendEmail }>
+                    <h2>Send an invitation email to your co-parent with their code:</h2>
+                    <label>Co-Parent Email: </label>
+                    <input  type='email'
+                            placeholder='email'
+                            name='co_email'
+                            value={ this.state.co_email }
+                            onChange={ this.changeHandler }/>
+                    <input  type='submit'
+                            value='Send Email' />
+                </form>
             </div>
             }
         </div>

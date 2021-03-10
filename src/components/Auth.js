@@ -33,7 +33,7 @@ class Auth extends Component {
         e.preventDefault()
         const { f_name, l_name, email, password, child_code } = this.state
         try {
-            const user = await axios.post('/api/auth/register', { f_name, l_name, email, password })
+            const user = await axios.post('/api/auth/register', { f_name, l_name, email, password, child_code })
             this.props.loginUser(user.data)
             //if has child_code then 
             this.props.history.push('/main')

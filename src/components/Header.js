@@ -5,6 +5,12 @@ import { connect } from 'react-redux'
 import { getUser, logoutUser } from '../redux/userReducer'
 
 class Header extends React.Component {
+    constructor(){
+        super()
+        this.state = {
+            isLoggedIn: true
+        }
+    }
     
     componentDidMount(){
         this.props.getUser()
@@ -20,20 +26,18 @@ class Header extends React.Component {
 
     render(){
     return <div>
-        {/* { this.props.isLoggedIn ? */}
+        { this.props.isLoggedIn ?
        <div className='header'>
             <h5>Welcome { this.props.user.f_name } { this.props.user.l_name }</h5>
             <div className='nav'>
                     <Link className='links' to="home">Home</Link>
-                    <Link className='links' to="/calendar">Calendar</Link>
                     <Link className='links' to="/expenses">Expenses</Link>
-                    <Link className='links' to="/contacts">Contacts</Link>
                     <button onClick={ this.logout }>Logout</button>
             </div>
         </div>
-        {/* :
-        <Link to='/'>Please Login</Link>
-        } */}
+        :
+        <Link to='/' />
+        }
     </div>
     }
 }
