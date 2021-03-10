@@ -14,8 +14,17 @@ class Main extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getUser()
+        console.log('hit')
         if(this.props.user.child_code){
+            this.setState({
+                hasChild: true
+            })
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        console.log(this.props.user.child_code)
+        if(this.props.user.child_code && (prevProps.user.child_code != this.props.user.child_code)){
             this.setState({
                 hasChild: true
             })
