@@ -76,11 +76,11 @@ class Auth extends Component {
                             </div>
                             <div>
                                 <input  type='submit'
-                                        value='Login'
+                                        value='SIGN IN'
                                         className='auth-btn' />
                             </div>
                         <h3>Don't have an account?</h3>
-                        <button className='auth-btn' onClick={this.toggleNewUser}>Sign Up</button>
+                        <button className='auth-btn' onClick={this.toggleNewUser}>SIGN UP</button>
                     </form>
                     :
                     <form onSubmit={ this.register }>
@@ -116,7 +116,7 @@ class Auth extends Component {
                             value={this.state.child_code}
                             onChange={this.changeHandler}/>
                     <input  type='submit'
-                            value='Sign Up'/>
+                            value='Sign up'/>
                     <h3>Already have an account?</h3>
                     <button className='auth-btn' onClick={this.toggleNewUser}>Login</button>
                     </form>

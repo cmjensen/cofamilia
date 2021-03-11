@@ -24,7 +24,7 @@ class Main extends React.Component {
 
     componentDidUpdate(prevProps) {
         console.log(this.props.user.child_code)
-        if(this.props.user.child_code && (prevProps.user.child_code != this.props.user.child_code)){
+        if(this.props.user.child_code && (prevProps.user.child_code !== this.props.user.child_code)){
             this.setState({
                 hasChild: true
             })
@@ -42,7 +42,7 @@ class Main extends React.Component {
         e.preventDefault(e)
         const { child_name } = this.state
         try {
-            const child = await axios.post('/api/child', { child_name })
+            await axios.post('/api/child', { child_name })
         }
         catch {
             alert('Failed to add child')

@@ -40,8 +40,8 @@ app.post('/api/auth/logout', userCtrl.logoutUser);
 //EXPENSES ENDPOINTS
 app.get('/api/expenses', expensesCtrl.getExpenses);
 app.post('/api/expense', expensesCtrl.addExpense);
-app.put('/api/expense/:id', expensesCtrl.updateExpense)
-app.delete('/api/expense/:id', expensesCtrl.deleteExpense);
+app.put('/api/expense/:expense_id', expensesCtrl.updateExpense)
+app.delete('/api/expense/:expense_id', expensesCtrl.deleteExpense);
 
 
 //CHILD ENDPOINTS

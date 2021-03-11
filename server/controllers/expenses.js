@@ -23,11 +23,24 @@ module.exports = {
     },
     updateExpense: async ( req, res ) => {
         const db = req.app.get('db')
+        if( req.session.user ){
+            const { amount, description } = req.body
+            const { expense_id } = req.params
+            const updatedExpense = await db.expenses.update_expense([ amount, description, expense_id ])
+            return res.status(200).send(updatedExpense)
+        } else {
+            return res.status(401).send('Please log in to update an expense.')
+        }
         
     },
-    deleteExpense: ( req, res ) => {
+    deleteExpense: async ( req, res ) => {
         const db = req.app.get('db')
-        const { id } = req.params
-        db.expenses.delete_expense( id ).then( res.sendStatus(200) )
+        if( req.session.user ){
+            const { expense_id } = req.params
+            const expense = await db.expenses.delete_expense( expense_id )
+            return res.status(200).send(expense)
+        } else {
+            return res.status(401).send('Please log in to delete an expense.')
+        }
     }
 }
