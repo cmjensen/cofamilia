@@ -37,8 +37,10 @@ module.exports = {
         const db = req.app.get('db')
         if( req.session.user ){
             const { expense_id } = req.params
-            const expense = await db.expenses.delete_expense( expense_id )
-            return res.status(200).send(expense)
+            await db.expenses.delete_expense( expense_id )
+            const [ child ] = await db.child.get_child([ req.session.user.userId ])
+            const expenses = await db.expenses.get_expenses([ child.child_id ])
+            return res.status(200).send(expenses)
         } else {
             return res.status(401).send('Please log in to delete an expense.')
         }

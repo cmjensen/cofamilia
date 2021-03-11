@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
 import { loginUser } from '../redux/userReducer'
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
+import LockOpenIcon from '@material-ui/icons/LockOpen';
 
 class Auth extends Component {
     constructor(){
@@ -61,18 +63,23 @@ class Auth extends Component {
                     <form onSubmit={ this.login }>
                         <h1>CoFamilia</h1>
                         <div className='login-inputs'>
-                            <label>Email </label>
+                        <div>
+                            <MailOutlineIcon />
                             <input  type='text'
-                                    placeholder='email'
+                                    className='input-field'
+                                    placeholder='Email Address: '
                                     name='email'
                                     value={this.state.email}
                                     onChange={this.changeHandler}/>
-                            <label>Password </label>
+                        </div>
+                        <div>
+                            <LockOpenIcon />
                             <input  type='password'
-                                    placeholder='password'
+                                    placeholder='Password: '
                                     name='password'
                                     value={this.state.password}
                                     onChange={this.changeHandler}/>
+                        </div>
                             </div>
                             <div>
                                 <input  type='submit'

@@ -46,9 +46,9 @@ class Expenses extends Component {
         }
     }
 
-    updateExpense = async (expense_id) => {
+    updateExpense = async (amount, description, expense_id) => {
         try {
-            const expenses = await axios.updateExpense(`/api/expense/${ expense_id }`)
+            const expenses = await axios.put(`/api/expense/${ expense_id }`, { amount, description })
             this.setState({
                 expenses: expenses.data
             })
@@ -76,7 +76,7 @@ class Expenses extends Component {
     render(){
         const mappedExpenses = this.state.expenses.map( expense => {
             const { expense_id, amount, description } = expense
-            return <ExpenseItem key={ expense_id } amount={ amount } description ={ description } id={ expense_id } updateExpense = { () => this.updateExpense(expense_id)} deleteExpense={ () => this.deleteExpense(expense_id) }/>
+            return <ExpenseItem key={ expense_id } amount={ amount } description ={ description } id={ expense_id } updateExpense = {this.updateExpense} deleteExpense={this.deleteExpense}/>
         })
 
         return <div>
