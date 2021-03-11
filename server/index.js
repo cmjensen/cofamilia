@@ -6,6 +6,7 @@ const childCtrl = require('./controllers/child')
 const mailCtrl = require('./controllers/mailer')
 const massive = require('massive')
 const session = require('express-session')
+const path = require('path')
 
 
 const app = express();
@@ -53,3 +54,9 @@ app.post('/api/mail', mailCtrl.sendEmail);
 
 
 app.listen(SERVER_PORT, () => console.log(`Running on port ${SERVER_PORT}`));
+
+app.use( express.static( `${__dirname}/../build`));
+
+app.get('*', ( req,res )=> { 
+res.sendFile(path.join(__dirname, '../build/index.html')) 
+})

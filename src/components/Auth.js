@@ -75,6 +75,7 @@ class Auth extends Component {
                         <div>
                             <LockOpenIcon />
                             <input  type='password'
+                                    className='input-field'
                                     placeholder='Password: '
                                     name='password'
                                     value={this.state.password}
