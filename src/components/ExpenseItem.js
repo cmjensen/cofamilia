@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 
 const ExpenseItem = (props) => {
     const { id, updateExpense, deleteExpense } = props
@@ -20,8 +22,8 @@ const ExpenseItem = (props) => {
         <div>
             <h1>{amount}</h1>
             <h1>{description}</h1>
-            <button onClick={() => setEditMode(!editMode)}>Edit</button>
-            <button onClick={() => deleteExpense(id)}>Delete</button>
+            <button><EditIcon onClick={() => setEditMode(!editMode)}/></button>
+            <button><DeleteIcon onClick={() => deleteExpense(id)} /></button>
         </div>
 
 }

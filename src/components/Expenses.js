@@ -39,7 +39,6 @@ class Expenses extends Component {
             this.setState({
                 expenses: expenses.data
             })
-            alert('Expense added')
         }
         catch {
             alert('Failed to add expense')
@@ -52,7 +51,6 @@ class Expenses extends Component {
             this.setState({
                 expenses: expenses.data
             })
-            alert('Expense edited')
         }
         catch {
             alert('Failed to edit expense')
@@ -65,7 +63,6 @@ class Expenses extends Component {
             this.setState({
                 expenses: expenses.data
             })
-            alert('Expense deleted')
         }
         catch {
             alert('Failed to delete expense')
