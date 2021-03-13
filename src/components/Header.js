@@ -32,6 +32,7 @@ class Header extends React.Component {
             <div className='nav'>
                     <Link className='links' to="home">Home</Link>
                     <Link className='links' to="/expenses">Expenses</Link>
+                    <Link className='links' to="/contacts">Contacts</Link>
                     <button onClick={ this.logout }>Logout</button>
             </div>
         </div>

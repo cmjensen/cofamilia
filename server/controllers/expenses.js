@@ -14,7 +14,7 @@ module.exports = {
         if( req.session.user ){
             const { amount, description } = req.body
             const [ child ] = await db.child.get_child([ req.session.user.userId ])
-            const newExpense = await db.expenses.add_expense([ amount, description, child.child_id ])
+            await db.expenses.add_expense([ amount, description, child.child_id ])
             const expenses = await db.expenses.get_expenses([ child.child_id ])
             return res.status(200).send(expenses)
         } else {

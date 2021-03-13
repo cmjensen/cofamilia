@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express')
 const userCtrl = require('./controllers/user')
 const expensesCtrl = require('./controllers/expenses')
+const contactsCtrl = require('./controllers/contacts')
 const childCtrl = require('./controllers/child')
 const mailCtrl = require('./controllers/mailer')
 const massive = require('massive')
@@ -43,6 +44,12 @@ app.get('/api/expenses', expensesCtrl.getExpenses);
 app.post('/api/expense', expensesCtrl.addExpense);
 app.put('/api/expense/:expense_id', expensesCtrl.updateExpense)
 app.delete('/api/expense/:expense_id', expensesCtrl.deleteExpense);
+
+//CONTACTS ENDPOINTS
+app.get('/api/contacts', contactsCtrl.getContacts);
+app.post('/api/contact', contactsCtrl.addContacts);
+app.put('/api/contact/:contact_id', contactsCtrl.updateContact);
+app.delete('/api/contact/:contact_id', contactsCtrl.deleteContact);
 
 
 //CHILD ENDPOINTS
