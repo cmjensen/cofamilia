@@ -1,23 +1,36 @@
-.expenses-box {
-  width: 700px;
-  height: 100px;
-  border: 1px solid black;
-  border-radius: 15px;
-  padding: 50px;
+.expense-display {
+  margin: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.user-expenses {
-  font-size: 2em;
+.expense-display .expense-data {
+  width: 450px;
+  height: 100px;
+}
+
+.add-exp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .login {
+  position: absolute;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   background-color: #005457;
   width: 100vw;
@@ -25,6 +38,16 @@
   color: white;
   padding: 50px;
   text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .login h1 {
@@ -36,22 +59,35 @@
   font-size: 20px;
 }
 
+label {
+  text-align: start;
+}
+
 .auth-btn {
-  border: 1px solid white;
+  border: none;
   margin: 20px 0;
   border-radius: 5px;
-  background-color: #005457;
+  background-color: #018786;
   text-align: center !important;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   color: white;
-  width: 80px;
-  height: 25px;
+  width: 200px;
+  height: 50px;
   font-size: 15px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .login-inputs {
   font-size: 1.5em;
-  text-align: left;
+  color: #005457;
+  width: 450px;
+  height: 600px;
+  background: white;
+  padding: 35px;
+  border-radius: 5px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+          box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .login-inputs label {
@@ -61,9 +97,11 @@
 
 .input-field {
   height: 25px;
-  width: 400px;
-  border: none;
-  background: transparent;
+  width: 350px;
+  background: white;
+  border-radius: 20px;
+  border: 1px;
+  border-bottom: white;
 }
 
 .header {
@@ -84,6 +122,19 @@
 .links {
   text-decoration: none;
   margin: 30px;
+  color: white;
+}
+
+.main {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  width: 100vw;
+  height: 800px;
+  background-image: url("../images/holdinghand.jpg");
+  background-size: cover;
+}
+
+.main h2 {
+  font-size: 3em;
   color: white;
 }
 

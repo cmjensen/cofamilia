@@ -20,5 +20,12 @@ module.exports = {
         } else {
             return res.status(401).send('Please log in to add a child.')
         }
+    },
+    checkJoin: async ( req, res ) => {
+        const db = req.app.get('db')
+        const { userId } = req.session.user
+        const [ isJoined ] = await db.child.check_join([ userId ])
+        console.log(isJoined)
+        return res.status(200).send(isJoined)
     }
 }

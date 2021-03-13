@@ -18,7 +18,7 @@ module.exports = {
             from: 'cofamilia.app@gmail.com',
             to: co_email,
             subject: 'Invite to Sign up for CoFamilia',
-            text: `I got my mailer system to work on my app and it's awesomeeeeeeeee. (Not actually an invite sry)`
+            text: `${ f_name } ${ l_name } has invited you to join CoFamilia. To join accounts with ${ f_name }, please register using this code: ${ child_code }.`
         }
         transporter.sendMail( message, function( err ) {
             if (err) {

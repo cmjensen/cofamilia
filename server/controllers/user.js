@@ -41,7 +41,6 @@ module.exports = {
                 child_code: childCode.child_code
             }
             res.status(200).send(req.session.user)
-            console.log(req.session.user)
         } else {
             res.status(401).send('Incorrect login credentials.')
         }

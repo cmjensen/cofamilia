@@ -6,7 +6,7 @@ const childCtrl = require('./controllers/child')
 const mailCtrl = require('./controllers/mailer')
 const massive = require('massive')
 const session = require('express-session')
-const path = require('path')
+// const path = require('path')
 
 
 const app = express();
@@ -48,6 +48,7 @@ app.delete('/api/expense/:expense_id', expensesCtrl.deleteExpense);
 //CHILD ENDPOINTS
 app.get('/api/child', childCtrl.getChild);
 app.post('/api/child', childCtrl.addChild);
+app.get('/api/child/join', childCtrl.checkJoin);
 
 //MAIL ENDPOINT
 app.post('/api/mail', mailCtrl.sendEmail);

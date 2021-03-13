@@ -3,6 +3,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getUser } from '../redux/userReducer'
 import ExpenseItem from './ExpenseItem'
+import AddIcon from '@material-ui/icons/Add';
+import TextField from '@material-ui/core/TextField';
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 
 class Expenses extends Component {
     constructor(){
@@ -12,6 +15,7 @@ class Expenses extends Component {
             amount: '',
             description: '',
             expense_id: '',
+            addingExpense: false,
         }
     }
 
@@ -31,13 +35,20 @@ class Expenses extends Component {
         })
     }
 
+    toggleAddingExpense = () => {
+        this.setState({
+            addingExpense: !this.state.addingExpense
+        })
+    }
+
     addExpense = async e => {
         e.preventDefault(e)
         const { amount, description } = this.state
         try {
             const expenses = await axios.post('/api/expense', { amount, description })
             this.setState({
-                expenses: expenses.data
+                expenses: expenses.data,
+                addingExpense: !this.state.addingExpense
             })
         }
         catch {
@@ -77,30 +88,34 @@ class Expenses extends Component {
         })
 
         return <div>
-            <div>
-                <form onSubmit={ this.addExpense }>
-                    <label>Amount: $</label>
-                    <input  type='number'
-                            min='1'
-                            step='any'
-                            name='amount'
-                            value={ this.state.amount }
-                            onChange={ this.changeHandler }/>
-                    <label>Description: </label>
-                    <input  type='text'
-                            placeholder='description' 
-                            name='description'
-                            value={ this.state.description }
-                            onChange={ this.changeHandler }/>
-                    <input  type='submit'
-                            value='Add Expense' />
-                </form>
                 <div>
                     { mappedExpenses }
                 </div>
+            { this.state.addingExpense ? 
+                // <form onSubmit={ this.addExpense }>
+                    <div className='add-exp'>
+                        <TextField  id="outlined-basic"
+                                    label="Amount" 
+                                    variant="outlined" 
+                                    name='amount'
+                                    value={ this.state.amount } 
+                                    onChange={ this.changeHandler }/>
+                        
+                        <TextField  id="outlined-basic" 
+                                    label="Description" 
+                                    variant="outlined" 
+                                    name='description'
+                                    value={ this.state.description }
+                                    onChange={ this.changeHandler }/>
+                        <ArrowUpwardIcon onClick={() => this.addExpense } />
+                    </div>
+                // </form>
+                :
+                <div className='expense-display'>
+                    <AddIcon onClick={this.toggleAddingExpense}/>
+                </div>
+                }
             </div>
-          
-    </div>
     }
 }
 
