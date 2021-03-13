@@ -30,8 +30,8 @@ CREATE TABLE contacts (
     child_id INT REFERENCES child(child_id)
 );
 
-CREATE TABLE schedule (
-    schedule_id SERIAL PRIMARY KEY,
-    date DATE NOT NULL,
-    child_id INT REFERENCES child(child_id)
-);
+-- CREATE TABLE schedule (
+--     schedule_id SERIAL PRIMARY KEY,
+--     date DATE NOT NULL,
+--     child_id INT REFERENCES child(child_id)
+-- );

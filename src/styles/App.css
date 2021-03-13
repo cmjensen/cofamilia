@@ -12,6 +12,12 @@
           align-items: center;
 }
 
+.expense-display .expense-item {
+  border-radius: 10px;
+  -webkit-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+          box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
 .expense-display .expense-data {
   width: 450px;
   height: 100px;
@@ -27,6 +33,16 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.add-btn {
+  border: none;
+  background-color: #ff8400;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+  color: white;
 }
 
 .login {

@@ -92,7 +92,7 @@ class Expenses extends Component {
                     { mappedExpenses }
                 </div>
             { this.state.addingExpense ? 
-                // <form onSubmit={ this.addExpense }>
+                <form onSubmit={ this.addExpense }>
                     <div className='add-exp'>
                         <TextField  id="outlined-basic"
                                     label="Amount" 
@@ -100,16 +100,16 @@ class Expenses extends Component {
                                     name='amount'
                                     value={ this.state.amount } 
                                     onChange={ this.changeHandler }/>
-                        
+                    
                         <TextField  id="outlined-basic" 
                                     label="Description" 
                                     variant="outlined" 
                                     name='description'
                                     value={ this.state.description }
                                     onChange={ this.changeHandler }/>
-                        <ArrowUpwardIcon onClick={() => this.addExpense } />
+                        <button className='add-btn'><ArrowUpwardIcon type='submit' /></button>
                     </div>
-                // </form>
+                </form>
                 :
                 <div className='expense-display'>
                     <AddIcon onClick={this.toggleAddingExpense}/>

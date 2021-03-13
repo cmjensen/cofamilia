@@ -1,8 +1,18 @@
+$main-background: #005457;
+$accent: #018786;
+$lightest: #C8FFF4;
+$complimentary: #ff8400;
+
 .expense-display {
   margin: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  .expense-item {
+    border-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
 
   .expense-data {
       width: 450px;
@@ -14,6 +24,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.add-btn {
+  border: none;
+  background-color: $complimentary;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+  color: white;
 }
 
 
