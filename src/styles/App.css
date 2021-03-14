@@ -66,7 +66,7 @@
           align-items: center;
 }
 
-.login h1 {
+.login .cofamilia {
   font-size: 3em;
   padding: 25px;
 }
@@ -120,13 +120,174 @@ label {
   border-bottom: white;
 }
 
+.please-enter {
+  text-align: center;
+  font-size: 1.4em;
+  margin-bottom: 30px;
+}
+
+.code {
+  margin: 20px;
+  font-size: 1.5em;
+}
+
+.pending {
+  width: 300px;
+  background-color: #C8FFF4;
+  padding: 20px 10px;
+}
+
+.main {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  width: 100vw;
+  height: 3000px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.main .collab {
+  font-size: 2.5em;
+  color: white;
+  text-align: center;
+  padding: 25px 35px;
+}
+
+.transparent-box {
+  width: 80%;
+  height: 30%;
+  background-color: #ff840040;
+  position: relative;
+  top: 10%;
+  margin: 0% 10%;
+}
+
+#img {
+  background-image: url("../images/holdinghand.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 600px;
+}
+
+.heading-text {
+  font-size: 2em;
+  color: #005457;
+}
+
+.complimentary {
+  color: #ff8400 !important;
+}
+
+.view2, .view3, .view4 {
+  width: 100vw;
+  height: 800px;
+}
+
+.view2 {
+  background-color: #F1F2F4;
+  text-align: center;
+}
+
+.view4 {
+  background-color: #F1F2F4;
+}
+
+.footer {
+  background-color: #005457;
+  color: white;
+  width: 100vw;
+  height: 100px;
+  text-align: center;
+  margin: auto;
+  padding: 35px;
+}
+
+.main {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  width: 100vw;
+  height: 3000px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.main .collab {
+  font-size: 2.5em;
+  color: white;
+  text-align: center;
+  padding: 25px 35px;
+}
+
+.transparent-box {
+  width: 80%;
+  height: 30%;
+  background-color: #ff840040;
+  position: relative;
+  top: 10%;
+  margin: 0% 10%;
+}
+
+#img {
+  background-image: url("../images/holdinghand.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 600px;
+}
+
+.heading-text {
+  font-size: 2em;
+  color: #005457;
+}
+
+.complimentary {
+  color: #ff8400 !important;
+}
+
+.view2, .view3, .view4 {
+  width: 100vw;
+  height: 800px;
+}
+
+.view2 {
+  background-color: #F1F2F4;
+  text-align: center;
+}
+
+.view4 {
+  background-color: #F1F2F4;
+}
+
+.footer {
+  background-color: #005457;
+  color: white;
+  width: 100vw;
+  height: 100px;
+  text-align: center;
+  margin: auto;
+  padding: 35px;
+}
+
 .header {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   background-color: #005457;
   width: 100vw;
   height: 100px;
   color: white;
-  padding: 50px;
+  padding: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -135,23 +296,30 @@ label {
           justify-content: space-evenly;
 }
 
-.links {
+.header .main-logo {
+  font-size: 3.8em;
+  margin-right: 60px;
+}
+
+.header .link {
   text-decoration: none;
-  margin: 30px;
   color: white;
+  width: 60px;
+  height: 60px;
 }
 
-.main {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+.footer {
+  background-color: #005457;
+  color: white;
   width: 100vw;
-  height: 800px;
-  background-image: url("../images/holdinghand.jpg");
-  background-size: cover;
-}
-
-.main h2 {
-  font-size: 3em;
-  color: white;
+  height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  padding: 15px;
 }
 
 html, body, div, span, applet, object, iframe,

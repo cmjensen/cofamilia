@@ -1,7 +1,4 @@
-
-$main-background: #005457;
-$accent: #018786;
-$lightest: #C8FFF4;
+@import './colors';
 
 .login {
     position: absolute;
@@ -17,7 +14,7 @@ $lightest: #C8FFF4;
     align-items: center;
     
     
-    h1 {
+    .cofamilia {
         font-size: 3em;
         padding: 25px;
     }
@@ -69,4 +66,21 @@ label {
         border-radius: 20px;
         border: 1px;
         border-bottom: white;
-    }
+}
+
+.please-enter {
+    text-align: center;
+    font-size: 1.4em;
+    margin-bottom: 30px;
+}
+
+.code {
+    margin: 20px;
+    font-size: 1.5em;
+}
+
+.pending {
+    width: 300px;
+    background-color: $lightest;
+    padding: 20px 10px;
+}

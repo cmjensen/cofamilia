@@ -20,9 +20,13 @@ class Login extends Component {
         e.preventDefault(e)
         const { email, password } = this.state
         try {
-            const user = await axios.post('/api/auth/login', { email, password })
-            this.props.loginUser(user.data)
-            this.props.history.push('/status')
+            if(email || password ){
+                const user = await axios.post('/api/auth/login', { email, password })
+                this.props.loginUser(user.data)
+                this.props.history.push('/status')
+            } else {
+                alert('Please enter an email and password.')
+            }
         }
         catch {
             alert('Failed Login Attempt')
@@ -59,7 +63,7 @@ class Login extends Component {
                 {!this.state.newUser ?
                     <form onSubmit={ this.login }>
                         <div>
-                            <h1>CoFamilia</h1>
+                            <h1 className='cofamilia'>CoFamilia</h1>
                         </div>
                         <div className='login-inputs'>
                         <div>
@@ -91,7 +95,7 @@ class Login extends Component {
                     </form>
                     :
                     <form onSubmit={ this.register }>
-                    <h1>Create Account</h1>
+                    <h1 className='cofamilia'>Create Account</h1>
                     <div className='login-inputs'>
                         <label>First Name </label>
                         <input  type='text'

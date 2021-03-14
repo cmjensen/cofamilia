@@ -2,6 +2,7 @@ import axios from 'axios'
 import React from 'react'
 import { connect } from 'react-redux'
 import { getUser } from '../redux/userReducer'
+import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 
 class Status extends React.Component {
     constructor(){
@@ -9,13 +10,13 @@ class Status extends React.Component {
         this.state = {
             child_name: '',
             co_email: '',
-            hasChild: false
+            hasChild: true,
+            hasQuestion: false
         }
     }
 
     componentDidMount() {
         axios.get('/api/child/join').then( res => {
-            console.log(res.data)
             if( res.data.parent2_id ){
                 this.props.history.push('/home')
             } else {
@@ -42,11 +43,20 @@ class Status extends React.Component {
         })
     }
 
+    toggleHasQuestion = () => {
+        this.setState({
+            hasQuestion: !this.state.hasQuestion
+        })
+    }
+
     addChild = async (e) => {
         e.preventDefault(e)
         const { child_name } = this.state
         try {
             await axios.post('/api/child', { child_name })
+            this.setState({
+                hasChild: true
+            })
         }
         catch {
             alert('Failed to add child')
@@ -67,38 +77,52 @@ class Status extends React.Component {
 
 
     render(){
-        return <div>
+        return <div className='login'>
             { !this.state.hasChild ?
-            <div>
-                <form onSubmit={ this.addChild }>
-                    <h1>Please enter the name of the oldest child you share with your co-parent</h1>
-                    <label>Child's Name:</label>
-                    <input  type='text'
-                            placeholder='child name'
-                            name='child_name'
-                            value={ this.state.child_name }
-                            onChange={ this.changeHandler }/>
-                    <input  type='submit'
-                            value='Add Child'/>
-                </form>
-            </div>
+                    <form onSubmit={ this.addChild }>
+                        <div className='login-inputs'>
+                        <h2 className='please-enter'>Please enter the name of the oldest child you share with your co-parent</h2>
+                        <label>Child's Name:</label>
+                        <input  type='text'
+                                placeholder='child name'
+                                className='input-field'
+                                name='child_name'
+                                value={ this.state.child_name }
+                                onChange={ this.changeHandler }/>
+                        <input  type='submit'
+                                className='auth-btn'
+                                value='Add Child'/>
+                        </div>
+                    </form>
             :
-            <div>
-                    <h2>Status: Pending</h2>
+            <div className='login-inputs'>
+                    <h2>Status: <span className='complimentary'>Pending</span><HelpOutlineIcon  onClick={ this.toggleHasQuestion }/></h2>
+                    { !this.state.hasQuestion ?
+                    <div className='pending'>
+                        <h3>You will be able to access CoFamilia once your co-parent has created an account and joined with yours.</h3>
+                    </div>
+                    : null }
+                    <br></br>
                     <h2>Please provide your co-parent with this code to use when registering:</h2>
-                    <h2>{this.props.user.child_code}</h2>
-                    <h3>You will be able to access CoFamilia once your co-parent has created an account and joined with yours.</h3>
-                <form onSubmit={ this.sendEmail }>
-                    <h2>Send an invitation email to your co-parent with their code:</h2>
-                    <label>Co-Parent Email: </label>
-                    <input  type='email'
-                            placeholder='email'
-                            name='co_email'
-                            value={ this.state.co_email }
-                            onChange={ this.changeHandler }/>
-                    <input  type='submit'
-                            value='Send Email' />
-                </form>
+                    <div className='code'>
+                        <span className='complimentary'>{this.props.user.child_code}</span>
+                    </div>
+                <div>
+                    <form onSubmit={ this.sendEmail }>
+                        <h2>Send an invitation email to your co-parent with their code:</h2>
+                        <br></br>
+                        <label>Co-Parent Email </label>
+                        <input  type='email'
+                                placeholder='email'
+                                className='input-field'
+                                name='co_email'
+                                value={ this.state.co_email }
+                                onChange={ this.changeHandler }/>
+                        <input  type='submit'
+                                value='Send Email'
+                                className='auth-btn' />
+                    </form>
+                </div>
             </div>
             }
         </div>

@@ -1,7 +1,4 @@
-$main-background: #005457;
-$accent: #018786;
-$lightest: #C8FFF4;
-$complimentary: #ff8400;
+@import './colors';
 
 .expense-display {
   margin: 50px;
