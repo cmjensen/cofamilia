@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs')
 
 module.exports = {
     register: async ( req, res ) => {
+        console.log(req.body)
         const db = req.app.get('db')
         const { f_name, l_name, email, password, child_code } = req.body
         const [foundUser] = await db.user.find_user_by_email([ email ])
@@ -11,7 +12,7 @@ module.exports = {
         const salt = bcrypt.genSaltSync(10)
         let hash = bcrypt.hashSync( password, salt )
         const [newUser] = await db.user.create_user([ f_name, l_name, email, hash ])
-        const [updateChild] = await db.child.update_child([ newUser.user_id, child_code ])
+        const [updateChild] = await db.child.update_child([ newUser.user_id, child_code || null ])
         const [newCode] = await db.child.get_child([ newUser.user_id ])
         req.session.user = {
             userId: newUser.user_id,

@@ -45,7 +45,7 @@ class Header extends React.Component {
            <div className='header-logo'>LOGO</div>
             <h2>Welcome { this.props.user.f_name}</h2>
             <PersonIcon color='primary' style={{ fontSize: 70 }}/>
-            {/* <button onClick={ this.logout }>Logout</button> */}
+            <button onClick={ this.logout }>Logout</button>
         
         {/* <div className='footer'>
             <Link className='icons' to="home"><HomeIcon color='primary' style={{ fontSize: 80 }}/></Link>

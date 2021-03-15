@@ -97,7 +97,7 @@ class Status extends React.Component {
             :
             <div className='login-inputs'>
                     <h2>Status: <span className='complimentary'>Pending</span><HelpOutlineIcon  onClick={ this.toggleHasQuestion }/></h2>
-                    { !this.state.hasQuestion ?
+                    { this.state.hasQuestion ?
                     <div className='pending'>
                         <h3>You will be able to access CoFamilia once your co-parent has created an account and joined with yours.</h3>
                     </div>
