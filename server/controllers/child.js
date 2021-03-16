@@ -15,7 +15,11 @@ module.exports = {
         if( req.session.user ){
             const { userId } = req.session.user
             const child_code = Math.floor(Math.random() * 1000000)
-            const newChild = await db.child.add_child([ userId, user.user_id, child_name, child_code ])
+            const [newChild] = await db.child.add_child([ userId, user.user_id, child_name, child_code ])
+            req.session.user = {
+                ...req.session.user, 
+                child_code: newChild.child_code
+            }
             return res.status(200).send(newChild)
         } else {
             return res.status(401).send('Please log in to add a child.')

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
 import { loginUser } from '../redux/userReducer'
+import logo from '../images/logo.png'
 
 class Login extends Component {
     constructor(){
@@ -62,14 +63,16 @@ class Login extends Component {
         return <div className='login'>  
                 {!this.state.newUser ?
                     <form onSubmit={ this.login }>
-                        <div>
-                            <h1 className='cofamilia'>CoFamilia</h1>
-                        </div>
+                        
                         <div className='login-inputs'>
                         <div>
+                        <div>
+                        <img className='logo-auth' src={logo} />
+                        </div>
                             <label>Email Address</label>
                             <input  type='text'
                                     className='input-field'
+                                    autoComplete='off'
                                     placeholder='Email'
                                     name='email'
                                     value={this.state.email}
@@ -79,11 +82,13 @@ class Login extends Component {
                             <label>Password</label>
                             <input  type='password'
                                     className='input-field'
+                                    autoComplete='off'
                                     placeholder='Password'
                                     name='password'
                                     value={this.state.password}
                                     onChange={this.changeHandler}/>
                         </div>
+                        <br />
                             <div>
                                 <input  type='submit'
                                         value='Sign In'
@@ -95,7 +100,6 @@ class Login extends Component {
                     </form>
                     :
                     <form onSubmit={ this.register }>
-                    <h1 className='cofamilia'>Create Account</h1>
                     <div className='login-inputs'>
                         <label>First Name </label>
                         <input  type='text'

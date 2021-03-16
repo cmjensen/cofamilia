@@ -1,5 +1,10 @@
 @import './colors';
 
+.expense-main {
+  height: 74vh;
+  overflow: scroll;
+}
+
 .expense-display {
   margin: 50px;
   display: flex;
@@ -17,10 +22,31 @@
     }
 }
 
+.contact-input {
+  width: 40%;
+}
+
 .add-exp {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.add-contact {
+  background-color: $accent-faded;
+  padding: 5%;
+  border-radius: 15px;
+  width: 80%;
+  margin: 3% 10%;
+}
+
+.edit-contact {
+  background-color: $accent-faded;
+  padding: 5%;
+  border-radius: 15px;
+  width: 50%;
+  margin: 10% 25%;
+  text-align: center;
 }
 
 .add-btn {
@@ -33,5 +59,10 @@
   color: white;
 }
 
+.heading-text1 {
+  font-size: 2em;
+  color: $main-background;
+  margin: 5% 39%;
+}
 
 

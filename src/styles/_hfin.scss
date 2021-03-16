@@ -1,0 +1,47 @@
+@import './colors';
+
+.header1 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: $main-background;
+    width: 100vw;
+    height: 140px;
+    color: white;
+    padding-top: 15px;
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+
+    .main-logo {
+        font-size: 3.8em;
+        margin-right: 60px;
+    }
+
+    .link {
+        text-decoration: none;
+        width: 60px;
+        height: 60px;
+        margin-top: 9px;
+    }
+    
+    .logo {
+        width: 320px;
+        height: 100px;
+    }
+
+    .exit {
+        margin-top: 5%;
+    }
+}
+
+
+.footer1 {
+    background-color: $main-background;
+    color: white;
+    width: 100vw;
+    height: 100px;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 15px 15px;
+    bottom: 0;
+    position: relative;
+}

@@ -86,14 +86,18 @@ class Contacts extends Component {
             return <ContactItem key={ contact_id } contact_f_name={ contact_f_name } contact_l_name={ contact_l_name } number={ number } category={ category } id={ contact_id } updateContact={ this.updateContact } deleteContact={ this.deleteContact } />
         })
 
-    return  <div>
+    return  <div className='expense-main'>
+        <h1 className='heading-text1'>Contacts</h1>
                 <div>
                     { mappedContacts }
                 </div>
             { this.state.addingContact ?
                 <form onSubmit={ this.addContact }>
-                    <div className='add-exp'>
+                    <div className='add-contact'>
+                        <div>
                         <TextField  id='outlined-basic'
+                                    autoComplete='off'
+                                    className='contact-input'
                                     label='First Name'
                                     variant='outlined'
                                     name='contact_f_name'
@@ -101,27 +105,37 @@ class Contacts extends Component {
                                     onChange={ this.changeHandler }/>
                         <TextField  id='outlined-basic'
                                     label='Last Name'
+                                    className='contact-input'
+                                    autoComplete='off'
                                     variant='outlined'
                                     name='contact_l_name'
                                     value={ this.state.contact_l_name }
                                     onChange={ this.changeHandler }/>
+                        </div>
+                        <br />
+                    <div>
                         <TextField  id='outlined-basic'
                                     label='Number'
+                                    className='contact-input'
+                                    autoComplete='off'
                                     variant='outlined'
                                     name='number'
                                     value={ this.state.number }
                                     onChange={ this.changeHandler }/>
                         <TextField  id='outlined-basic'
                                     label='Category'
+                                    className='contact-input'
+                                    autoComplete='off'
                                     variant='outlined'
                                     name='category'
                                     value={ this.state.category }
                                     onChange={ this.changeHandler }/>
-                    </div>
                 <button className='add-btn'><ArrowUpwardIcon type='submit' /></button>
+                    </div>
+                    </div>
                 </form>
                 :
-                <div className='expense-display'>
+                <div className='expense-display' >
                     <AddIcon onClick={ this.toggleAddingContact } />
                 </div>
             }

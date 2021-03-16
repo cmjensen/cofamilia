@@ -10,6 +10,8 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import PhoneIcon from '@material-ui/icons/Phone';
 import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
+import SaveIcon from '@material-ui/icons/Save';
 
 const ContactItem = (props) => {
     const { id, updateContact, deleteContact } = props
@@ -20,65 +22,65 @@ const ContactItem = (props) => {
     const [number, setNumber] = useState(props.number)
     const [category, setCategory] = useState(props.category)
 
-    const fullName = `${ contact_f_name } ${ contact_l_name }`
-    const numberCategory = `${ number }`
+    const fullName = `${contact_f_name} ${contact_l_name}`
+    const numberCategory = `${number}`
 
     return editMode ? <div>
-        <div>
-        </div>
-        <input  value={ contact_f_name }
+        <div className='edit-contact'>
+            <TextField value={contact_f_name}
                 onChange={(e) => setContactFName(e.target.value)} />
-        <input  value={ contact_l_name }
+            <TextField value={contact_l_name}
                 onChange={(e) => setContactLName(e.target.value)} />
-        <input  value={ number }
+            <TextField value={number}
                 onChange={(e) => setNumber(e.target.value)} />
-        <input  value={ category }
+            <TextField value={category}
                 onChange={(e) => setCategory(e.target.value)} />
-        <button onClick={() => {
-            updateContact(contact_f_name, contact_l_name, number, category)
-            setEditMode(false)
-        }}>Save</button>
+            <SaveIcon  style={{ fontSize: 40 }} color='action' onClick={() => {
+                updateContact(contact_f_name, contact_l_name, number, category)
+                setEditMode(false)
+            }} />
+        </div>
     </div>
-    :
-    <div>
-        <div className='expense-display'>
-            <List className='expense-data'>
-                <div className='expense-item'>
-                    <ListItem>
-                        <ListItemAvatar>
-                            <Avatar>
-                            <PhoneIcon />
-                            </Avatar>
-                        </ListItemAvatar>
-                        <ListItemText
-                            primary={ fullName }
-                            secondary={
-                                <React.Fragment>
-                                  <Typography
-                                    component="span"
-                                    variant="body2"
-                                    color="textPrimary">
-                                    { number }
-                                  </Typography>
-                                  <div>
-                                  { category }
-                                  </div>
-                                </React.Fragment>
-                            }
+        :
+        <div>
+            <div className='expense-display'>
+                <List className='expense-data'>
+                    <div className='expense-item'>
+                        <ListItem>
+                            <ListItemAvatar>
+                                <Avatar>
+                                    <PhoneIcon />
+                                </Avatar>
+                            </ListItemAvatar>
+                            <ListItemText
+                                primary={fullName}
+                                secondary={
+                                    <React.Fragment>
+                                        <Typography
+                                            component="span"
+                                            variant="body2"
+                                            color="textPrimary">
+                                            {number}
+                                        </Typography>
+                                        <div>
+                                            {category}
+                                        </div>
+                                    </React.Fragment>
+                                }
                             />
-                        <ListItemSecondaryAction>
-                            <IconButton edge="end" aria-label="delete">
-                                <div>
-                                    <EditIcon onClick={() => setEditMode(!editMode)}/>
-                                    <DeleteIcon onClick={() => deleteContact(id)} />
-                                </div>
-                            </IconButton>
-                        </ListItemSecondaryAction>
+                            <ListItemSecondaryAction>
+                                <IconButton edge="end" aria-label="delete">
+                                    <div>
+                                        <EditIcon onClick={() => setEditMode(!editMode)} />
+                                        <DeleteIcon onClick={() => deleteContact(id)} />
+                                    </div>
+                                </IconButton>
+                            </ListItemSecondaryAction>
                         </ListItem>
                     </div>
                 </List>
+            </div>
         </div>
-    </div>
 }
 
 export default ContactItem

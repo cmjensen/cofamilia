@@ -37,6 +37,9 @@ class Expenses extends Component {
 
     toggleAddingExpense = () => {
         this.setState({
+            amount: '',
+            description: '',
+            expense_id: '',
             addingExpense: !this.state.addingExpense
         })
     }
@@ -87,7 +90,8 @@ class Expenses extends Component {
             return <ExpenseItem key={ expense_id } amount={ amount } description ={ description } id={ expense_id } updateExpense = {this.updateExpense} deleteExpense={this.deleteExpense}/>
         })
 
-        return <div>
+        return <div className='expense-main'>
+            <h1 className='heading-text1'>Expenses</h1>
                 <div>
                     { mappedExpenses }
                 </div>
@@ -98,6 +102,7 @@ class Expenses extends Component {
                                     label="Amount" 
                                     variant="outlined" 
                                     name='amount'
+                                    autoComplete='off'
                                     value={ this.state.amount } 
                                     onChange={ this.changeHandler }/>
                     
@@ -105,6 +110,7 @@ class Expenses extends Component {
                                     label="Description" 
                                     variant="outlined" 
                                     name='description'
+                                    autoComplete='off'
                                     value={ this.state.description }
                                     onChange={ this.changeHandler }/>
                         <button className='add-btn'><ArrowUpwardIcon type='submit' /></button>

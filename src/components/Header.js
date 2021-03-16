@@ -3,10 +3,8 @@ import axios from 'axios'
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getUser, logoutUser } from '../redux/userReducer'
-import HomeIcon from '@material-ui/icons/Home';
-import CreditCardIcon from '@material-ui/icons/CreditCard';
-import ContactsIcon from '@material-ui/icons/Contacts';
-import PersonIcon from '@material-ui/icons/Person';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import logo from '../images/logo.png'
 
 class Header extends React.Component {
     constructor(){
@@ -40,23 +38,14 @@ class Header extends React.Component {
 
     render(){
     return <div className='header-footer'>
-        {/* { this.props.isLoggedIn ? */}
-       <div className='header'>
-           <div className='header-logo'>LOGO</div>
-            <h2>Welcome { this.props.user.f_name}</h2>
-            <PersonIcon color='primary' style={{ fontSize: 70 }}/>
-            <button onClick={ this.logout }>Logout</button>
+        <div className='header1'>
+           <img className='logo' src={ logo } />
+            <ExitToAppIcon className='exit' color='white' style={{ fontSize: 50 }} onClick={ this.logout }/>
+        </div>
         
-        {/* <div className='footer'>
-            <Link className='icons' to="home"><HomeIcon color='primary' style={{ fontSize: 80 }}/></Link>
-            <Link className='icons' to="/expenses"><CreditCardIcon color='primary' style={{ fontSize: 80 }}/></Link>
-            <Link className='icons' to="/contacts"><ContactsIcon color='primary' style={{ fontSize: 70 }}/></Link>
-        </div> */}
+    </div>
+}
 
-        {/* </div> */}
-     </div>
-     </div>
-    }
 }
 
 const mapStateToProps = state => state

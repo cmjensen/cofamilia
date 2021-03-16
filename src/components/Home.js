@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Home = () => {
-    return <div>
+    return <div className='expense-main'>
         This is the Home component
     </div>
 }

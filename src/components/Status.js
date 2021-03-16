@@ -3,6 +3,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { getUser } from '../redux/userReducer'
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import logo from '../images/logo.png'
+
 
 class Status extends React.Component {
     constructor(){
@@ -10,12 +12,13 @@ class Status extends React.Component {
         this.state = {
             child_name: '',
             co_email: '',
-            hasChild: true,
+            hasChild: false,
             hasQuestion: false
         }
     }
 
     componentDidMount() {
+        this.props.getUser()
         axios.get('/api/child/join').then( res => {
             if( res.data.parent2_id ){
                 this.props.history.push('/home')
@@ -57,6 +60,7 @@ class Status extends React.Component {
             this.setState({
                 hasChild: true
             })
+            // console.log(req.session.user)
         }
         catch {
             alert('Failed to add child')
@@ -81,10 +85,12 @@ class Status extends React.Component {
             { !this.state.hasChild ?
                     <form onSubmit={ this.addChild }>
                         <div className='login-inputs'>
+                        <img className='logo-auth' src={ logo } />
                         <h2 className='please-enter'>Please enter the name of the oldest child you share with your co-parent</h2>
                         <label>Child's Name:</label>
                         <input  type='text'
                                 placeholder='child name'
+                                autoComplete='off'
                                 className='input-field'
                                 name='child_name'
                                 value={ this.state.child_name }
@@ -96,6 +102,7 @@ class Status extends React.Component {
                     </form>
             :
             <div className='login-inputs'>
+                <img className='logo-auth' src={ logo } />
                     <h2>Status: <span className='complimentary'>Pending</span><HelpOutlineIcon  onClick={ this.toggleHasQuestion }/></h2>
                     { this.state.hasQuestion ?
                     <div className='pending'>
@@ -114,6 +121,7 @@ class Status extends React.Component {
                         <label>Co-Parent Email </label>
                         <input  type='email'
                                 placeholder='email'
+                                autoComplete='off'
                                 className='input-field'
                                 name='co_email'
                                 value={ this.state.co_email }
